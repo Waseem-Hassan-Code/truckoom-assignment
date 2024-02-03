@@ -1,0 +1,221 @@
+{
+  "departments": [
+    {
+      "departmentName": "Finance",
+      "designations": [
+        "Financial Analyst",
+        "Senior Financial Accountant",
+        "Finance Manager",
+        "Tax Specialist",
+        "Auditor",
+        "Budget Analyst"
+      ],
+      "id": "101"
+    },
+    {
+      "departmentName": "Human Resources",
+      "designations": [
+        "HR Manager",
+        "HR Specialist",
+        "Recruitment Coordinator",
+        "HR Intern"
+      ],
+      "id": "102"
+    },
+    {
+      "departmentName": "Marketing",
+      "designations": [
+        "Marketing Manager",
+        "Marketing Coordinator",
+        "Social Media Specialist"
+      ],
+      "id": "103"
+    },
+    {
+      "departmentName": "IT",
+      "designations": [
+        "IT Manager",
+        "Software Developer",
+        "Network Administrator"
+      ],
+      "id": "104"
+    },
+    {
+      "id": "105",
+      "departmentName": "Customer Service",
+      "designations": [
+        "Customer Service Representative",
+        "Customer Support Specialist",
+        "Client Relations Manager"
+      ]
+    },
+    {
+      "id": "106",
+      "departmentName": "Research and Development",
+      "designations": [
+        "Research Scientist",
+        "Product Development Engineer",
+        "R&D Coordinator"
+      ]
+    },
+    {
+      "id": "107",
+      "departmentName": "Sales",
+      "designations": [
+        "Sales Representative",
+        "Sales Manager",
+        "Account Executive"
+      ]
+    },
+    {
+      "id": "108",
+      "departmentName": "Legal",
+      "designations": [
+        "Legal Counsel",
+        "Paralegal",
+        "Legal Secretary"
+      ]
+    },
+    {
+      "id": "109",
+      "departmentName": "Operations",
+      "designations": [
+        "Operations Manager",
+        "Logistics Coordinator",
+        "Supply Chain Analyst"
+      ]
+    },
+    {
+      "id": "110",
+      "departmentName": "Quality Assurance",
+      "designations": [
+        "QA Analyst",
+        "Quality Control Inspector",
+        "Testing Engineer"
+      ]
+    }
+  ],
+  "employees": [
+    {
+      "id": "1001",
+      "employeeName": "Rajesh Kumar",
+      "gender": "Male",
+      "address": "22 MG Road, Bengaluru",
+      "department": "Finance",
+      "designations": "Financial Analyst",
+      "email": "rajesh.kumar@example.com",
+      "mobileNumber": "9876543210",
+      "bloodGroup": "B+"
+    },
+    {
+      "id": "1002",
+      "employeeName": "Priya Sharma",
+      "gender": "Female",
+      "address": "45 Jubilee Hills, Hyderabad",
+      "department": "Human Resources",
+      "designations": "HR Manager",
+      "email": "priya.sharma@example.com",
+      "mobileNumber": "8765432109",
+      "bloodGroup": "B-"
+    },
+    {
+      "id": "1003",
+      "employeeName": "Amit Patel",
+      "gender": "Male",
+      "address": "78 Malad West, Mumbai",
+      "department": "Marketing",
+      "designations": "Marketing Coordinator",
+      "email": "amit.patel@example.com",
+      "mobileNumber": "7890123456",
+      "bloodGroup": "O+"
+    },
+    {
+      "id": "1004",
+      "employeeName": "Divya Singh",
+      "gender": "Female",
+      "address": "101 Koramangala, Bengaluru",
+      "department": "IT",
+      "designations": "Software Developer",
+      "email": "divya.singh@example.com",
+      "mobileNumber": "8901234567",
+      "bloodGroup": "AB-"
+    },
+    {
+      "id": "1005",
+      "employeeName": "Anand Sharma",
+      "gender": "Male",
+      "address": "32 Connaught Place, New Delhi",
+      "department": "Customer Service",
+      "designations": "Customer Service Representative",
+      "email": "anand.sharma@example.com",
+      "mobileNumber": "7012345678",
+      "bloodGroup": "A-"
+    },
+    {
+      "id": "1006",
+      "employeeName": "Neha Kapoor",
+      "gender": "Female",
+      "address": "654 Powai, Mumbai",
+      "department": "Research and Development",
+      "designations": "Research Scientist",
+      "email": "neha.kapoor@example.com",
+      "mobileNumber": "8909876543",
+      "bloodGroup": "B+"
+    },
+    {
+      "id": "1007",
+      "employeeName": "Rahul Gupta",
+      "gender": "Male",
+      "address": "87 MG Road, Pune",
+      "department": "Sales",
+      "designations": "Sales Representative",
+      "email": "rahul.gupta@example.com",
+      "mobileNumber": "7654321098",
+      "bloodGroup": "O-"
+    },
+    {
+      "id": "1008",
+      "employeeName": "Kavita Reddy",
+      "gender": "Female",
+      "address": "98 HSR Layout, Bengaluru",
+      "department": "Legal",
+      "designations": "Legal Counsel",
+      "email": "kavita.reddy@example.com",
+      "mobileNumber": "9876543210",
+      "bloodGroup": "AB+"
+    },
+    {
+      "id": "1009",
+      "employeeName": "Vijay Kumar",
+      "gender": "Male",
+      "address": "234 Baner, Pune",
+      "department": "Operations",
+      "designations": "Operations Manager",
+      "email": "vijay.kumar@example.com",
+      "mobileNumber": "8765432109",
+      "bloodGroup": "B+"
+    },
+    {
+      "id": "1010",
+      "employeeName": "Sneha Joshi",
+      "gender": "Female",
+      "address": "543 Whitefield, Bengaluru",
+      "department": "Quality Assurance",
+      "designations": "QA Analyst",
+      "email": "sneha.joshi@example.com",
+      "mobileNumber": "7654321098",
+      "bloodGroup": "A-"
+    },
+    {
+      "id": "b051",
+      "employeeName": "Employee1",
+      "address": "fwafa",
+      "department": "Marketing",
+      "designations": "Marketing Coordinator",
+      "email": "employee1@test.com",
+      "mobileNumber": "45454545454",
+      "gender": "Male",
+      "bloodGroup": "AB+"
+    }
+  ]
+}

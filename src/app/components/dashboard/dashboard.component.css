@@ -1,0 +1,14 @@
+.card{
+    color: #fff;
+}
+
+mat-card-header{
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+mat-card-content{
+    font-size: 20px;
+    font-weight: 500;
+}

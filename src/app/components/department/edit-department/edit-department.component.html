@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-header><h3>Edit Department Details</h3></mat-card-header>
+    <hr class="mx-2">
+    <mat-card-content>
+        <div class="row w-100">
+            <form [formGroup]="editDepartmentForm">
+            
+                <div class="col-xl-6 form-field">
+                    <mat-form-field>
+                      <mat-label>Department Name</mat-label>
+                      <input formControlName="departmentName" id="departmentName" (input)="onInputChange()" type="text" matInput placeholder="Enter Name">
+                      <mat-error *ngIf="editDepartmentForm.get('departmentName').invalid && editDepartmentForm.get('departmentName').touched">This field is required</mat-error>
+                    </mat-form-field>
+                    <mat-error *ngIf="editDepartmentForm.get('departmentName').dirty && departmentExists">Department Already Exists<br>Please Enter Valid Department Name</mat-error>
+                </div>
+                
+                <div class="col-12" *ngIf="showDesignation">
+                    <table>
+                        <div formArrayName="designations">
+                            <thead>
+                                <tr>
+                                    <th width="250px">Add Designations</th>
+                                    <th><button class="btn btn-info" (click)="addDesignationInput()">Add Designation</button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let val of editDepartmentForm.get('designations')['controls']; let i = index">
+                                    <td>    
+                                        <input formControlName="{{i}}" type="text" class="form-control">
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" (click)="removeDesignationInput(i)">Remove</button>   
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </table>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-warning" type="Submit" [disabled]="editDepartmentForm.invalid" (click)="onUpdateDepartment()">Update</button>
+                </div>
+            </form>
+        </div>
+        
+    </mat-card-content>
+</mat-card> 

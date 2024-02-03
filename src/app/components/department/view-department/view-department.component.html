@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-header><h3>All Departments</h3></mat-card-header>
+    <hr class="mx-2">
+    <mat-card-content>
+        <table datatable [dtOptions]="departmentOptions" [dtTrigger]="departmentTrigger" class="row-border hover">                    
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Department Name</th>  
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr *ngFor="let department of departmentData; let i=index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ department.departmentName }}</td>
+                
+                <td class="text-center">
+                  <button mat-icon-button (click)="onDepartmentEdit(department.id)"><mat-icon class="edit-icon">create</mat-icon></button>
+                  <button mat-icon-button (click)="onDepartmentDelete(department.id)"><mat-icon class="delete-icon">delete</mat-icon></button>
+                </td>
+                
+              </tr>
+              
+            </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>
