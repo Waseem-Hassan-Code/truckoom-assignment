@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
-
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,20 +13,24 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+  MatTreeModule,
+} from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { AddDepartmentComponent } from './components/department/add-department/add-department.component';
 import { ViewDepartmentComponent } from './components/department/view-department/view-department.component';
 import { EditDepartmentComponent } from './components/department/edit-department/edit-department.component';
 import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
 import { ViewEmployeeComponent } from './components/employee/view-employee/view-employee.component';
 import { EditEmployeeComponent } from './components/employee/edit-employee/edit-employee.component';
-
-
+import { ApiInterceptor } from './services/Interceptor/BaseApi.interceptor';
+import { ViewServicesComponent } from './components/services/view-services/view-services.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { EditEmployeeComponent } from './components/employee/edit-employee/edit-
     ViewEmployeeComponent,
     EditEmployeeComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    ViewServicesComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,9 +60,17 @@ import { EditEmployeeComponent } from './components/employee/edit-employee/edit-
     MatTreeModule,
     MatIconModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    BrowserModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

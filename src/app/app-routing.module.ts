@@ -7,6 +7,7 @@ import { AddEmployeeComponent } from './components/employee/add-employee/add-emp
 import { ViewEmployeeComponent } from './components/employee/view-employee/view-employee.component';
 import { EditDepartmentComponent } from './components/department/edit-department/edit-department.component';
 import { EditEmployeeComponent } from './components/employee/edit-employee/edit-employee.component';
+import { ViewServicesComponent } from './components/services/view-services/view-services.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -18,12 +19,16 @@ const routes: Routes = [
   { path: 'employee/add', component: AddEmployeeComponent },
   { path: 'employee/view', component: ViewEmployeeComponent },
   { path: 'employee/edit/:id', component: EditEmployeeComponent },
+
+  // Employee Routes
+  { path: 'services/add', component: ViewServicesComponent },
+  { path: 'services/view', component: ViewServicesComponent },
   //Other
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

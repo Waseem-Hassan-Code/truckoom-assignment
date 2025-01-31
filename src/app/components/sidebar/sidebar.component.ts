@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
-
+import { FlatTreeControl } from '@angular/cdk/tree';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+  MatTreeModule,
+} from '@angular/material/tree';
 
 interface NavNodes {
   name: string;
@@ -15,15 +18,29 @@ const TREE_DATA: NavNodes[] = [
     name: 'Department',
     routeLink: '/department',
     iconName: 'business',
-    children: [{name: 'Add Department', routeLink: '/department/add', iconName:''}, {name: 'View Department', routeLink: '/department/view',iconName:''}],
+    children: [
+      { name: 'Add Department', routeLink: '/department/add', iconName: '' },
+      { name: 'View Department', routeLink: '/department/view', iconName: '' },
+    ],
   },
   {
     name: 'Employee',
     routeLink: '/employee',
     iconName: 'supervisor_account',
-    children: [{name: 'Add Employee', routeLink: '/employee/add', iconName: ''}, {name: 'View Employee', routeLink: '/employee/view', iconName: ''}],
+    children: [
+      { name: 'Add Employee', routeLink: '/employee/add', iconName: '' },
+      { name: 'View Employee', routeLink: '/employee/view', iconName: '' },
+    ],
   },
-  
+  {
+    name: 'Services',
+    routeLink: '/services',
+    iconName: 'supervisor_account',
+    children: [
+      { name: 'Add Employee', routeLink: '/services/view', iconName: '' },
+      { name: 'View Services', routeLink: '/services/view', iconName: '' },
+    ],
+  },
 ];
 
 /** Flat node with expandable and level information */
@@ -35,18 +52,12 @@ interface NavFlatNode {
   level: number;
 }
 
-
-
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrl: './sidebar.component.css',
 })
-
-
 export class SidebarComponent {
-
   private _transformer = (node: NavNodes, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
@@ -58,15 +69,15 @@ export class SidebarComponent {
   };
 
   treeControl = new FlatTreeControl<NavFlatNode>(
-    node => node.level,
-    node => node.expandable,
+    (node) => node.level,
+    (node) => node.expandable
   );
 
   treeFlattener = new MatTreeFlattener(
     this._transformer,
-    node => node.level,
-    node => node.expandable,
-    node => node.children,
+    (node) => node.level,
+    (node) => node.expandable,
+    (node) => node.children
   );
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);

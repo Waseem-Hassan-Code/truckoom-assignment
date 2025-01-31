@@ -1,4 +1,9 @@
 import {
+  BrowserModule,
+  DomRendererFactory2
+} from "./chunk-ORZMFWF5.js";
+import "./chunk-VT2SJOGA.js";
+import {
   AUTO_STYLE,
   AnimationGroupPlayer,
   NoopAnimationPlayer,
@@ -6,11 +11,6 @@ import {
   style,
   ɵPRE_STYLE
 } from "./chunk-E7FNT2J2.js";
-import {
-  BrowserModule,
-  DomRendererFactory2
-} from "./chunk-ORZMFWF5.js";
-import "./chunk-VT2SJOGA.js";
 import {
   DOCUMENT
 } from "./chunk-LYWEOCCW.js";

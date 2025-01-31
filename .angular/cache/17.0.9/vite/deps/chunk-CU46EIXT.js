@@ -80,6 +80,23 @@ import {
   takeUntil
 } from "./chunk-V4QF72PL.js";
 
+// node_modules/@angular/cdk/fesm2022/coercion.mjs
+function coerceBooleanProperty(value) {
+  return value != null && `${value}` !== "false";
+}
+function coerceNumberProperty(value, fallbackValue = 0) {
+  return _isNumberValue(value) ? Number(value) : fallbackValue;
+}
+function _isNumberValue(value) {
+  return !isNaN(parseFloat(value)) && !isNaN(Number(value));
+}
+function coerceArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function coerceElement(elementOrRef) {
+  return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
+}
+
 // node_modules/@angular/cdk/fesm2022/platform.mjs
 var hasV8BreakIterator;
 try {
@@ -311,23 +328,6 @@ function hasModifierKey(event, ...modifiers) {
     return modifiers.some((modifier) => event[modifier]);
   }
   return event.altKey || event.shiftKey || event.ctrlKey || event.metaKey;
-}
-
-// node_modules/@angular/cdk/fesm2022/coercion.mjs
-function coerceBooleanProperty(value) {
-  return value != null && `${value}` !== "false";
-}
-function coerceNumberProperty(value, fallbackValue = 0) {
-  return _isNumberValue(value) ? Number(value) : fallbackValue;
-}
-function _isNumberValue(value) {
-  return !isNaN(parseFloat(value)) && !isNaN(Number(value));
-}
-function coerceArray(value) {
-  return Array.isArray(value) ? value : [value];
-}
-function coerceElement(elementOrRef) {
-  return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
 }
 
 // node_modules/@angular/cdk/fesm2022/observers.mjs
@@ -4420,6 +4420,9 @@ var _MatInternalFormField = __MatInternalFormField;
 })();
 
 export {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+  coerceElement,
   Platform,
   getSupportedInputTypes,
   normalizePassiveListenerOptions,
@@ -4428,9 +4431,6 @@ export {
   getRtlScrollAxisType,
   ESCAPE,
   hasModifierKey,
-  coerceBooleanProperty,
-  coerceNumberProperty,
-  coerceElement,
   ObserversModule,
   InteractivityChecker,
   FocusTrapFactory,
@@ -4441,4 +4441,4 @@ export {
   MatRippleModule,
   MatRippleLoader
 };
-//# sourceMappingURL=chunk-KCJZBO3Q.js.map
+//# sourceMappingURL=chunk-CU46EIXT.js.map
