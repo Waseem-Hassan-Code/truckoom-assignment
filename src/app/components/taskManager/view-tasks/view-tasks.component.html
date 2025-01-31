@@ -1,0 +1,71 @@
+<div class="container">
+  <h2>Tasks List</h2>
+
+  <mat-table [dataSource]="dataSource">
+    <!-- ID Column (shortened) -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.id | slice : 0 : 8 }} </mat-cell>
+      <!-- Show first 8 characters of GUID -->
+    </ng-container>
+
+    <!-- Service Name Column -->
+    <ng-container matColumnDef="taskName">
+      <mat-header-cell *matHeaderCellDef> Task Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.serviceName }} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.description }} </mat-cell>
+    </ng-container>
+
+    <!-- Created Date Column -->
+    <ng-container matColumnDef="createdDate">
+      <mat-header-cell *matHeaderCellDef> Created Date </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{ row.createdDate | date : "short" }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Created By Column -->
+    <ng-container matColumnDef="createdBy">
+      <mat-header-cell *matHeaderCellDef> Created By </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.createdBy }} </mat-cell>
+    </ng-container>
+
+    <!-- Modified By Column -->
+    <ng-container matColumnDef="modifiedBy">
+      <mat-header-cell *matHeaderCellDef> Modified By </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{ row.lastModifiedBy || "N/A" }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Action Column (Delete and Edit) -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button color="primary">Edit</button>
+        <button mat-button color="warn" (click)="onDelete(row.id)">
+          Delete
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Table Header and Rows -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <!-- Pagination -->
+  <mat-paginator
+    [length]="totalRecords"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage - 1"
+    (page)="pageChanged($event)"
+    [pageSizeOptions]="[10, 20, 50]"
+  >
+  </mat-paginator>
+</div>

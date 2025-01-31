@@ -1,14 +1,38 @@
-.card{
-    color: #fff;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-mat-card-header{
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 1rem;
+.form-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
 }
 
-mat-card-content{
-    font-size: 20px;
-    font-weight: 500;
+.dropdown-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+mat-form-field {
+  width: 48%;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .dropdown-container {
+    flex-direction: column;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
 }

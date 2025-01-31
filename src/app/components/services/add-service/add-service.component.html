@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Add New Service</h2>
+
+  <mat-card class="form-card">
+    <form (ngSubmit)="onSubmit()" [formGroup]="serviceForm">
+      <!-- Service Name Field -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Service Name</mat-label>
+        <input
+          matInput
+          formControlName="serviceName"
+          placeholder="Enter service name"
+        />
+        <mat-error *ngIf="serviceForm.get('serviceName').hasError('required')">
+          Service name is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Description Field -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Enter description"
+          rows="4"
+        ></textarea>
+        <mat-error *ngIf="serviceForm.get('description').hasError('required')">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Remarks Field -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Remarks</mat-label>
+        <textarea
+          matInput
+          formControlName="remarks"
+          placeholder="Enter remarks"
+          rows="4"
+        ></textarea>
+        <mat-error *ngIf="serviceForm.get('remarks').hasError('required')">
+          Remarks are required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="serviceForm.invalid"
+        >
+          Add Service
+        </button>
+        <button mat-button type="button" (click)="resetForm()">Cancel</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

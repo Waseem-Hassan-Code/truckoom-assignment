@@ -1,20 +1,49 @@
-<mat-card>
-    <!-- <mat-card-header></mat-card-header> -->
-    
-    <mat-card-content>
-        <div class="row">
-            <div class="col-4">
-                <mat-card class="card" style="background-color: crimson;">
-                    <mat-card-header>Total Departments</mat-card-header>
-                    <mat-card-content>{{ departmentCount }}</mat-card-content>
-                </mat-card>
-            </div>
-            <div class="col-4">
-                <mat-card class="card" style="background-color:darkcyan;">
-                    <mat-card-header>Total Employees</mat-card-header>
-                    <mat-card-content>{{ employeeCount }}</mat-card-content>
-                </mat-card>
-            </div>
-        </div>
-    </mat-card-content>
-</mat-card>
+<div class="container">
+  <mat-card class="form-card">
+    <form [formGroup]="dropdownForm" (ngSubmit)="onSubmit()">
+      <div class="dropdown-container">
+        <!-- Service Dropdown -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Service</mat-label>
+          <mat-select formControlName="selectedService" required>
+            <mat-option *ngFor="let service of services" [value]="service.id">
+              {{ service.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="dropdownForm.get('selectedService').hasError('required')"
+          >
+            Service selection is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Task Dropdown -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Task</mat-label>
+          <mat-select formControlName="selectedTask" required>
+            <mat-option *ngFor="let task of tasks" [value]="task.id">
+              {{ task.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="dropdownForm.get('selectedTask').hasError('required')"
+          >
+            Task selection is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Button to log the selected IDs -->
+      <div class="form-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="dropdownForm.invalid"
+        >
+          Log Selected IDs
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

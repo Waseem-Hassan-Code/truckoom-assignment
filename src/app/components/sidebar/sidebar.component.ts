@@ -15,35 +15,33 @@ interface NavNodes {
 
 const TREE_DATA: NavNodes[] = [
   {
-    name: 'Department',
-    routeLink: '/department',
-    iconName: 'business',
-    children: [
-      { name: 'Add Department', routeLink: '/department/add', iconName: '' },
-      { name: 'View Department', routeLink: '/department/view', iconName: '' },
-    ],
-  },
-  {
-    name: 'Employee',
-    routeLink: '/employee',
-    iconName: 'supervisor_account',
-    children: [
-      { name: 'Add Employee', routeLink: '/employee/add', iconName: '' },
-      { name: 'View Employee', routeLink: '/employee/view', iconName: '' },
-    ],
-  },
-  {
     name: 'Services',
     routeLink: '/services',
-    iconName: 'supervisor_account',
+    iconName: 'assignment',
     children: [
-      { name: 'Add Employee', routeLink: '/services/view', iconName: '' },
-      { name: 'View Services', routeLink: '/services/view', iconName: '' },
+      {
+        name: 'Add Service',
+        routeLink: '/services/add',
+        iconName: 'add_circle',
+      },
+      {
+        name: 'View Services',
+        routeLink: '/services/view',
+        iconName: 'visibility',
+      },
+    ],
+  },
+  {
+    name: 'Tasks',
+    routeLink: '/tasks',
+    iconName: 'work',
+    children: [
+      { name: 'Add Task', routeLink: '/tasks/add', iconName: 'add_task' },
+      { name: 'View Tasks', routeLink: '/tasks/view', iconName: 'view_list' },
     ],
   },
 ];
 
-/** Flat node with expandable and level information */
 interface NavFlatNode {
   expandable: boolean;
   name: string;

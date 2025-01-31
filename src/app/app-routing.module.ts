@@ -1,28 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddDepartmentComponent } from './components/department/add-department/add-department.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ViewDepartmentComponent } from './components/department/view-department/view-department.component';
-import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
-import { ViewEmployeeComponent } from './components/employee/view-employee/view-employee.component';
-import { EditDepartmentComponent } from './components/department/edit-department/edit-department.component';
-import { EditEmployeeComponent } from './components/employee/edit-employee/edit-employee.component';
+
 import { ViewServicesComponent } from './components/services/view-services/view-services.component';
+import { AddServiceComponent } from './components/services/add-service/add-service.component';
+import { AddTaskComponent } from './components/taskManager/add-task/add-task.component';
+import { ViewTasksComponent } from './components/taskManager/view-tasks/view-tasks.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  //Department Routes
-  { path: 'department/add', component: AddDepartmentComponent },
-  { path: 'department/view', component: ViewDepartmentComponent },
-  { path: 'department/edit/:id', component: EditDepartmentComponent },
-  // Employee Routes
-  { path: 'employee/add', component: AddEmployeeComponent },
-  { path: 'employee/view', component: ViewEmployeeComponent },
-  { path: 'employee/edit/:id', component: EditEmployeeComponent },
 
-  // Employee Routes
-  { path: 'services/add', component: ViewServicesComponent },
+  // Services Routes
+  { path: 'services/add', component: AddServiceComponent },
   { path: 'services/view', component: ViewServicesComponent },
+
+  // Tasks Routes
+  { path: 'tasks/add', component: AddTaskComponent },
+  { path: 'tasks/view', component: ViewTasksComponent },
   //Other
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];

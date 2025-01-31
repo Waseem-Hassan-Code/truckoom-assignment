@@ -13,37 +13,32 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {
-  MatTreeFlatDataSource,
-  MatTreeFlattener,
-  MatTreeModule,
-} from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { MatDividerModule } from '@angular/material/divider';
-import { AddDepartmentComponent } from './components/department/add-department/add-department.component';
-import { ViewDepartmentComponent } from './components/department/view-department/view-department.component';
-import { EditDepartmentComponent } from './components/department/edit-department/edit-department.component';
-import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
-import { ViewEmployeeComponent } from './components/employee/view-employee/view-employee.component';
-import { EditEmployeeComponent } from './components/employee/edit-employee/edit-employee.component';
 import { ApiInterceptor } from './services/Interceptor/BaseApi.interceptor';
 import { ViewServicesComponent } from './components/services/view-services/view-services.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { AddServiceComponent } from './components/services/add-service/add-service.component';
+import { AddTaskComponent } from './components/taskManager/add-task/add-task.component';
+import { ViewTasksComponent } from './components/taskManager/view-tasks/view-tasks.component';
+
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddDepartmentComponent,
-    ViewDepartmentComponent,
-    EditDepartmentComponent,
-    AddEmployeeComponent,
-    ViewEmployeeComponent,
-    EditEmployeeComponent,
     DashboardComponent,
     SidebarComponent,
     ViewServicesComponent,
+    AddServiceComponent,
+    AddTaskComponent,
+    ViewTasksComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +58,10 @@ import { ViewServicesComponent } from './components/services/view-services/view-
     MatDividerModule,
     BrowserModule,
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
   ],
   providers: [
     {
