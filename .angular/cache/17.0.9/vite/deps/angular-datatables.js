@@ -1,6 +1,6 @@
 import {
   CommonModule
-} from "./chunk-KRPS6A3N.js";
+} from "./chunk-PVP7C4DS.js";
 import {
   Directive,
   ElementRef,
@@ -13,7 +13,10 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵdirectiveInject
-} from "./chunk-OXVNHJMZ.js";
+} from "./chunk-RXRC473I.js";
+import "./chunk-2UXUBMH3.js";
+import "./chunk-KUOPV5YS.js";
+import "./chunk-UB6C7KF6.js";
 
 // node_modules/angular-datatables/src/angular-datatables.directive.js
 var __spreadArray = function(to, from, pack) {

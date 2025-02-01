@@ -49,7 +49,16 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Submit Button -->
+        <button
+          mat-raised-button
+          color="secondary"
+          type="button"
+          class="full-width"
+          (click)="navigateToLogin()"
+        >
+          Already have an account? Login
+        </button>
+
         <button
           mat-raised-button
           color="primary"
