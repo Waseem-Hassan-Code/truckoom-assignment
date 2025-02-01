@@ -3,8 +3,8 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
-  MatTreeModule,
 } from '@angular/material/tree';
+import { Router } from '@angular/router';
 
 interface NavNodes {
   name: string;
@@ -54,7 +54,7 @@ interface NavFlatNode {
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css',
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
   private _transformer = (node: NavNodes, level: number) => {
@@ -81,8 +81,24 @@ export class SidebarComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  constructor(private router: Router) {
+    this.dataSource.data = this.getFilteredTreeData();
+
+    this.router.events.subscribe(() => {
+      this.dataSource.data = this.getFilteredTreeData();
+    });
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  getFilteredTreeData(): NavNodes[] {
+    if (this.isAuthenticated()) {
+      return TREE_DATA;
+    } else {
+      return TREE_DATA.filter((node) => node.name === '');
+    }
   }
 
   hasChild = (_: number, node: NavFlatNode) => node.expandable;

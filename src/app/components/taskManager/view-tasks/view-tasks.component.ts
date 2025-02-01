@@ -8,6 +8,8 @@ import {
   _PaginatedResponseDto,
   ResponseDto,
 } from '../../../services/Model/ResponseDto';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-tasks',
@@ -35,7 +37,8 @@ export class ViewTasksComponent {
 
   constructor(
     private tasksService: TasksService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -56,8 +59,17 @@ export class ViewTasksComponent {
           this.toastr.error(response.message, 'Error');
         }
       },
-      error: (err) => {
-        this.errorMessage = 'Failed to load services';
+      error: (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.toastr.error(
+            'Your session has expired. Please log in again.',
+            'Unauthorized'
+          );
+          this.router.navigate(['/login']);
+        } else {
+          this.errorMessage = 'Failed to load tasks';
+          this.toastr.error(this.errorMessage, 'Error');
+        }
       },
     });
   }
