@@ -29,6 +29,7 @@ import { AddTaskComponent } from './components/taskManager/add-task/add-task.com
 import { ViewTasksComponent } from './components/taskManager/view-tasks/view-tasks.component';
 
 import { MatSelectModule } from '@angular/material/select';
+import { TaskPopupComponent } from './components/taskManager/task-popup/task-popup.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatSelectModule } from '@angular/material/select';
     AddServiceComponent,
     AddTaskComponent,
     ViewTasksComponent,
+    TaskPopupComponent,
   ],
   imports: [
     BrowserModule,

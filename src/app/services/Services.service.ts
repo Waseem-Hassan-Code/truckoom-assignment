@@ -8,6 +8,7 @@ import {
   ServiceModel,
 } from './Model/ResponseDto';
 import { ServiceDto } from './Model/ServicesDto';
+import { TasksByServiceIdDto } from './Model/TaskDto';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +25,10 @@ export class ServicesService {
     );
   }
 
-  getTasksByServiceId<T>(serviceId: string): Observable<ResponseDto<T>> {
-    return this.http.get<ResponseDto<T>>(
+  getTasksByServiceId<T>(
+    serviceId: string
+  ): Observable<ResponseDto<TasksByServiceIdDto[]>> {
+    return this.http.get<ResponseDto<TasksByServiceIdDto[]>>(
       `${this.baseUrl}get-tasks-by-serviceId?serviceId=${serviceId}`
     );
   }

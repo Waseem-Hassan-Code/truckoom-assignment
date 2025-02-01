@@ -16,3 +16,10 @@ export interface TaskModel {
   isDeleted: boolean;
   id: string;
 }
+
+export interface TasksByServiceIdDto {
+  id: string;
+  taskName: string;
+  description: string;
+  remarks: string;
+}

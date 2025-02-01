@@ -1,0 +1,18 @@
+.task-popup-container {
+  padding: 20px;
+}
+
+.task-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.task-card h3 {
+  margin-top: 0;
+}
+
+.task-card button {
+  margin-top: 10px;
+}

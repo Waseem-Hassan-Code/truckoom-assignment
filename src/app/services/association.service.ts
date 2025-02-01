@@ -26,7 +26,12 @@ export class AssociationService {
     );
   }
 
-  updateTask<T>(data: TaskDto): Observable<ResponseDto<T>> {
-    return this.http.put<ResponseDto<T>>(`${this.baseUrl}update-task`, data);
+  deletAssociation<T>(
+    serviceId: string,
+    taskId: string
+  ): Observable<ResponseDto<T>> {
+    return this.http.delete<ResponseDto<T>>(
+      `${this.baseUrl}delete-association?serviceId=${serviceId}&taskId=${taskId}`
+    );
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
 import { ServicesService } from '../../../services/services.service';
 import {
   _PaginatedResponseDto,
@@ -9,6 +9,7 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
+import { TaskPopupComponent } from '../../taskManager/task-popup/task-popup.component';
 
 @Component({
   selector: 'app-view-services',
@@ -36,8 +37,9 @@ export class ViewServicesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private ServicesService: ServicesService,
-    private toastr: ToastrService
+    private servicesService: ServicesService,
+    private toastr: ToastrService,
+    private dialog: MatDialog // Inject MatDialog
   ) {}
 
   ngOnInit() {
@@ -45,27 +47,28 @@ export class ViewServicesComponent implements OnInit {
   }
 
   loadServices() {
-    this.ServicesService.getServices(
-      '',
-      this.pageSize,
-      this.currentPage
-    ).subscribe({
-      next: (response: ResponseDto<_PaginatedResponseDto<ServiceModel>>) => {
-        if (response.isSuccess && response.response) {
-          this.services = response.response.data || [];
-          this.totalRecords = response.response.totalRecords || 0;
-          this.currentPage = response.response.currentPage || 1;
-          this.dataSource = new MatTableDataSource<ServiceModel>(this.services);
-          this.dataSource.paginator = this.paginator;
-          this.toastr.success(response.message, 'Success');
-        } else {
-          this.toastr.error(response.message, 'Error');
-        }
-      },
-      error: (err) => {
-        this.errorMessage = 'Failed to load services';
-      },
-    });
+    this.servicesService
+      .getServices('', this.pageSize, this.currentPage)
+      .subscribe({
+        next: (response: ResponseDto<_PaginatedResponseDto<ServiceModel>>) => {
+          if (response.isSuccess && response.response) {
+            this.services = response.response.data || [];
+            this.totalRecords = response.response.totalRecords || 0;
+            this.currentPage = response.response.currentPage || 1;
+            this.dataSource = new MatTableDataSource<ServiceModel>(
+              this.services
+            );
+            this.dataSource.paginator = this.paginator;
+            this.toastr.success(response.message, 'Success');
+          } else {
+            this.toastr.error(response.message, 'Error');
+          }
+        },
+        error: () => {
+          this.errorMessage = 'Failed to load services';
+          this.toastr.error(this.errorMessage, 'Error');
+        },
+      });
   }
 
   pageChanged(event: any) {
@@ -73,37 +76,31 @@ export class ViewServicesComponent implements OnInit {
     this.currentPage = event.pageIndex + 1;
     this.loadServices();
   }
+
   onDelete(rowId: string) {
-    console.log('Delete clicked for row with ID:', rowId);
-    this.ServicesService.deleteService(rowId).subscribe({
+    this.servicesService.deleteService(rowId).subscribe({
       next: (response: ResponseDto<any>) => {
         if (response.isSuccess) {
           this.toastr.success(response.message);
           this.loadServices();
         } else {
-          this.toastr.error(response.message, 'Success');
+          this.toastr.error(response.message, 'Error');
         }
       },
-      error: (err) => {
+      error: () => {
         this.toastr.error('Failed to delete service', 'Error');
       },
     });
   }
 
   viewTasks(serviceId: string) {
-    this.ServicesService.getTasksByServiceId(serviceId).subscribe({
-      next: (response) => {
-        if (response.response == null) {
-          this.toastr.warning(response.message, 'Warning');
-        } else if (response.isSuccess) {
-          this.toastr.success(response.message, 'Success');
-        } else {
-          this.toastr.error(response.message, 'Error');
-        }
-      },
-      error: (err) => {
-        this.toastr.error('Error fetching tasks', 'Error');
-      },
+    const dialogRef = this.dialog.open(TaskPopupComponent, {
+      width: '600px',
+      data: { serviceId: serviceId },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
     });
   }
 }

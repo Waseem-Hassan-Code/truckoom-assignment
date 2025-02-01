@@ -6,6 +6,7 @@ import {
   AssociationRequestDto,
   DropDownListBody,
 } from '../../services/Model/AssociationDto';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +25,6 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Fetch the dropdown lists
     this.associationService.getDropDownLists().subscribe(
       (response) => {
         if (response.isSuccess) {
@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
       }
     );
 
-    // Initialize the form
     this.dropdownForm = this.fb.group({
       selectedService: ['', Validators.required],
       selectedTask: ['', Validators.required],
@@ -54,13 +53,37 @@ export class DashboardComponent implements OnInit {
         serviceId: selectedServiceId,
         taskId: selectedTaskId,
       };
-      this.associationService.addAssociation(data).subscribe((response) => {
-        if (response.isSuccess) {
-          this.toastr.success(response.message, 'Success');
-        } else {
-          this.toastr.error(response.message, 'Error');
-        }
+
+      this.associationService.addAssociation(data).subscribe({
+        next: (response) => {
+          if (response.isSuccess) {
+            this.toastr.success(response.message, 'Success');
+          } else {
+            this.toastr.error(response.message, 'Error');
+          }
+        },
+        error: (err: HttpErrorResponse) => {
+          const statusCode = err.status;
+          const errorMessage =
+            err.error?.message ||
+            'An error occurred while processing your request.';
+
+          if (statusCode === 400) {
+            this.toastr.warning(errorMessage, 'Warning');
+          }
+          if (statusCode === 401) {
+            this.toastr.warning(errorMessage, 'Bad Request');
+          }
+          if (statusCode === 500) {
+            this.toastr.error(errorMessage, 'Error');
+          }
+        },
       });
+    } else {
+      this.toastr.error(
+        'Please fill out the form correctly.',
+        'Validation Error'
+      );
     }
   }
 }

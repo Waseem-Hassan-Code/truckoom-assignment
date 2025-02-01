@@ -14,6 +14,7 @@ interface NavNodes {
 }
 
 const TREE_DATA: NavNodes[] = [
+  { name: 'Dashboard', routeLink: '/dashboard', iconName: 'dashboard' },
   {
     name: 'Services',
     routeLink: '/services',

@@ -2,7 +2,6 @@
   <mat-card class="form-card">
     <form [formGroup]="dropdownForm" (ngSubmit)="onSubmit()">
       <div class="dropdown-container">
-        <!-- Service Dropdown -->
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Service</mat-label>
           <mat-select formControlName="selectedService" required>
@@ -17,7 +16,6 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- Task Dropdown -->
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Task</mat-label>
           <mat-select formControlName="selectedTask" required>
@@ -33,7 +31,6 @@
         </mat-form-field>
       </div>
 
-      <!-- Button to log the selected IDs -->
       <div class="form-actions">
         <button
           mat-raised-button

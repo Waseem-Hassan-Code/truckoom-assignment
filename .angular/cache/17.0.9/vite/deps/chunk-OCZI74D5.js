@@ -4941,12 +4941,19 @@ var _MatInternalFormField = __MatInternalFormField;
 })();
 
 export {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+  _isNumberValue,
+  coerceArray,
+  coerceCssPixelValue,
+  coerceElement,
   Platform,
   getSupportedInputTypes,
   normalizePassiveListenerOptions,
   RtlScrollAxisType,
   supportsScrollBehavior,
   getRtlScrollAxisType,
+  _getFocusedElementPierceShadowDom,
   _getEventTarget,
   _isTestEnvironment,
   ENTER,
@@ -4958,12 +4965,6 @@ export {
   DOWN_ARROW,
   A,
   hasModifierKey,
-  coerceBooleanProperty,
-  coerceNumberProperty,
-  _isNumberValue,
-  coerceArray,
-  coerceCssPixelValue,
-  coerceElement,
   ObserversModule,
   addAriaReferencedId,
   removeAriaReferencedId,
@@ -5020,4 +5021,4 @@ export {
   MatRippleLoader,
   _MatInternalFormField
 };
-//# sourceMappingURL=chunk-JPCIHRUJ.js.map
+//# sourceMappingURL=chunk-OCZI74D5.js.map

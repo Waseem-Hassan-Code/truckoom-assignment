@@ -1,0 +1,10 @@
+<div class="task-popup-container">
+  <h2>Tasks for Service</h2>
+  <div *ngFor="let task of tasks" class="task-card">
+    <h3>{{ task.taskName }}</h3>
+    <p>{{ task.description }}</p>
+    <p><strong>Remarks:</strong> {{ task.remarks }}</p>
+    <button mat-button color="warn" (click)="onDelete(task.id)">Delete</button>
+  </div>
+  <button mat-button (click)="onClose()">Close</button>
+</div>
